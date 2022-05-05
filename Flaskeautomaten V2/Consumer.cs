@@ -20,7 +20,6 @@ namespace Flaskeautomaten_V2
                     //And put this thread to sleep
                     if (Splitter.BeerDrinks.Count == 0)
                     {
-                        Monitor.PulseAll(Splitter.BeerDrinks);
                         Monitor.Wait(Splitter.BeerDrinks);
                     }
 
@@ -32,6 +31,7 @@ namespace Flaskeautomaten_V2
                         Console.WriteLine("{0} is Drinking " + drink.Name + drink.SerialNumber, Thread.CurrentThread.Name);
                     }
 
+                    Monitor.PulseAll(Splitter.BeerDrinks);
                 }
                 Thread.Sleep(500);
             }
@@ -48,7 +48,6 @@ namespace Flaskeautomaten_V2
                     //And put this thread to sleep
                     if (Splitter.SodaDrinks.Count == 0)
                     {
-                        Monitor.PulseAll(Splitter.SodaDrinks);
                         Monitor.Wait(Splitter.SodaDrinks);
                     }
 
@@ -60,6 +59,7 @@ namespace Flaskeautomaten_V2
                         Console.WriteLine("{0} is Drinking " + drink.Name + drink.SerialNumber, Thread.CurrentThread.Name);
                     }
 
+                    Monitor.PulseAll(Splitter.SodaDrinks);
                 }
                 Thread.Sleep(500);
             }

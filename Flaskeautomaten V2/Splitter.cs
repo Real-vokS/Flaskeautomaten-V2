@@ -20,8 +20,8 @@ namespace Flaskeautomaten_V2
 
         public static Queue<Drink> BeerDrinks
         {
-            get => sodaDrinks;
-            set => sodaDrinks = value;
+            get => beerDrinks;
+            set => beerDrinks = value;
         }
 
         public void Split()
@@ -44,18 +44,21 @@ namespace Flaskeautomaten_V2
                     //Then check that objects Name and if it contain Beer or Soda
                     //If it does then it enqueue it to the queue suitable for the obejct
                     if (Producer.Drinks.TryDequeue(out Drink drink))
-                    {
-                        if (drink.Name.Contains("Beer"))
                         {
-                            Console.WriteLine("moved " + drink.Name + drink.SerialNumber + " into beerDrinks");
-                            beerDrinks.Enqueue(drink);
+                            if (drink.Name.Contains("Beer"))
+                            {
+                                Console.WriteLine("moved " + drink.Name + drink.SerialNumber + " into beerDrinks");
+                                beerDrinks.Enqueue(drink);
+                            }
+                            else if (drink.Name.Contains("Soda"))
+                            {
+                                Console.WriteLine("moved " + drink.Name + drink.SerialNumber + " into sodaDrinks");
+                                sodaDrinks.Enqueue(drink);
+                            }
                         }
-                        else if(drink.Name.Contains("Soda"))
-                        {
-                            Console.WriteLine("moved " + drink.Name + drink.SerialNumber + " into sodaDrinks");
-                            sodaDrinks.Enqueue(drink);
-                        }
-                    }
+
+
+
                 }
 
                 //If beerDrinks.Count is equal to 24
@@ -81,9 +84,7 @@ namespace Flaskeautomaten_V2
                         Monitor.Wait(sodaDrinks);
                     }
                 }
-
-                Thread.Sleep(100);
-
+                Thread.Sleep(100 / 15);
             }
         }
     }

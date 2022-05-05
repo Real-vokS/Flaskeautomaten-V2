@@ -32,17 +32,6 @@ namespace Flaskeautomaten_V2
             beerConsumer.Start();
             sodaConsumer.Start();
 
-            
         }
-
-
-        
-
-        
-
-        
-
-
-       
     }
 }
