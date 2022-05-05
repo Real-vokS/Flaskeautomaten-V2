@@ -15,6 +15,7 @@ namespace Flaskeautomaten_V2
             Consumer c1 = new();
             Consumer c2 = new();
 
+            //Creates Threads
             Thread producer = new Thread(p.ProduceDrink);
             Thread splitter = new Thread(s.Split);
             Thread beerConsumer = new Thread(c1.DrinkBeer);
@@ -23,10 +24,12 @@ namespace Flaskeautomaten_V2
             beerConsumer.Name = "[Beer Consumer]";
             sodaConsumer.Name = "[Soda Consumer]";
 
+
+            //start threads
             producer.Start();
             splitter.Start();
-            beerConsumer.Start();
             Thread.Sleep(20);
+            beerConsumer.Start();
             sodaConsumer.Start();
 
             

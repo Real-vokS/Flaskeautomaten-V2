@@ -31,12 +31,18 @@ namespace Flaskeautomaten_V2
             {
                 lock (Producer.Drinks)
                 {
+                    //If the queue in producer drinks.count is equal to 0
+                    //Then it wakes up all threads that was locked with producers drinks queue
+                    //And puts this thread to sleep
                     if (Producer.Drinks.Count == 0)
                     {
                         Monitor.PulseAll(Producer.Drinks);
                         Monitor.Wait(Producer.Drinks);
                     }
 
+                    //Tries to take the first object in Producer.Drinks queue
+                    //Then check that objects Name and if it contain Beer or Soda
+                    //If it does then it enqueue it to the queue suitable for the obejct
                     if (Producer.Drinks.TryDequeue(out Drink drink))
                     {
                         if (drink.Name.Contains("Beer"))
@@ -52,6 +58,9 @@ namespace Flaskeautomaten_V2
                     }
                 }
 
+                //If beerDrinks.Count is equal to 24
+                //Then wake all threads up that are sleeping using beerDrinks
+                //And put itself to sleep
                 lock (beerDrinks)
                 {
                     if (beerDrinks.Count == 24)
@@ -61,6 +70,9 @@ namespace Flaskeautomaten_V2
                     }
                 }
 
+                //If sodaDrinks.Count is equal to 24
+                //Then wake all threads up that are sleeping using sodaDrinks
+                //And put itself to sleep
                 lock (sodaDrinks)
                 {
                     if (sodaDrinks.Count == 24)
