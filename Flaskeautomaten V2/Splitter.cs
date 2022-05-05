@@ -39,7 +39,7 @@ namespace Flaskeautomaten_V2
 
                     if (Producer.Drinks.TryDequeue(out Drink drink))
                     {
-                        if (drink.Name.Contains("Beer"))
+                        if (drink.Name == "Beer")
                         {
                             beerDrinks.Enqueue(drink);
                         }

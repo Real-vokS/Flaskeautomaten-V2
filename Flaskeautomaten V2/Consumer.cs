@@ -15,12 +15,10 @@ namespace Flaskeautomaten_V2
             {
                 lock (Splitter.BeerDrinks)
                 {
-                    Console.WriteLine(Producer.Drinks.Count);
 
-                    if (Splitter.BeerDrinks.Count == 18)
+                    if (Splitter.BeerDrinks.Count == 0)
                     {
                         Monitor.PulseAll(Splitter.BeerDrinks);
-                        Console.WriteLine(Thread.CurrentThread.Name);
                         Monitor.Wait(Splitter.BeerDrinks);
                     }
 
