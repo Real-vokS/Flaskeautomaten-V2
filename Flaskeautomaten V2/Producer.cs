@@ -31,9 +31,10 @@ namespace Flaskeautomaten_V2
             {
                 //lock (drinks)
                 Monitor.Enter(drinks);
-                if (drinks.Count == 10)
+                if (drinks.Count == 24)
                 {
                     Console.WriteLine("tesgggggggggggggggggggggggggggggggt");
+                    Monitor.PulseAll(drinks);
                     Monitor.Wait(drinks);
                 }
 
@@ -54,9 +55,8 @@ namespace Flaskeautomaten_V2
                     Console.WriteLine("Added Soda " + sodaCount);
                     sodaCount++;
                 }
-                Monitor.PulseAll(drinks);
                 Monitor.Exit(drinks);
-                Thread.Sleep(100 / 15);
+                Thread.Sleep(100);
             }
         }
     }

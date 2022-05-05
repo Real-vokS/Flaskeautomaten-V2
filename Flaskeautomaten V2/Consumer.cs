@@ -36,7 +36,6 @@ namespace Flaskeautomaten_V2
         {
             while (true)
             {
-                Console.WriteLine(Producer.Drinks.Count);
                 lock (Splitter.SodaDrinks)
                 {
                     if (Splitter.SodaDrinks.Count == 0)

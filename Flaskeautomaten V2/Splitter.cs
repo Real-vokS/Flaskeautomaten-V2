@@ -41,10 +41,12 @@ namespace Flaskeautomaten_V2
                     {
                         if (drink.Name.Contains("Beer"))
                         {
+                            Console.WriteLine("moved " + drink.Name + drink.SerialNumber + " into beerDrinks");
                             beerDrinks.Enqueue(drink);
                         }
                         else
                         {
+                            Console.WriteLine("moved " + drink.Name + drink.SerialNumber + " into sodaDrinks");
                             sodaDrinks.Enqueue(drink);
                         }
                     }
@@ -68,7 +70,7 @@ namespace Flaskeautomaten_V2
                     }
                 }
 
-                Thread.Sleep(100 / 15);
+                Thread.Sleep(100);
 
             }
         }
