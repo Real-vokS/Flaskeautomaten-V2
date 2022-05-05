@@ -44,7 +44,7 @@ namespace Flaskeautomaten_V2
                             Console.WriteLine("moved " + drink.Name + drink.SerialNumber + " into beerDrinks");
                             beerDrinks.Enqueue(drink);
                         }
-                        else
+                        else if(drink.Name.Contains("Soda"))
                         {
                             Console.WriteLine("moved " + drink.Name + drink.SerialNumber + " into sodaDrinks");
                             sodaDrinks.Enqueue(drink);
