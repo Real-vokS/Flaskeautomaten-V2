@@ -27,7 +27,6 @@ namespace Flaskeautomaten_V2
                     //Writes to console that the Beer Consumer is drinking said drink
                     if(Splitter.BeerDrinks.TryDequeue(out Drink drink))
                     {
-                        Console.WriteLine(Producer.Drinks.Count + " " + Splitter.BeerDrinks.Count);
                         Console.WriteLine("{0} is Drinking " + drink.Name + drink.SerialNumber, Thread.CurrentThread.Name);
                     }
 
@@ -55,7 +54,6 @@ namespace Flaskeautomaten_V2
                     //Writes to console that the Soda Consumer is drinking said drink
                     if (Splitter.SodaDrinks.TryDequeue(out Drink drink))
                     {
-                        Console.WriteLine(Producer.Drinks.Count + " " + Splitter.SodaDrinks.Count);
                         Console.WriteLine("{0} is Drinking " + drink.Name + drink.SerialNumber, Thread.CurrentThread.Name);
                     }
 
